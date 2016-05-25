@@ -6,7 +6,7 @@ require './dealer'
 
 
 class Hand
-  attr_reader :cards, :value
+  attr_reader :cards
 
   def initialize
     @cards = []
@@ -41,17 +41,11 @@ class Hand
     @cards.first.to_s
   end
 
-  def beats? h2
-    unless busted? do
-      if @value > h2.value
-        true
-      else
-        false
-      end
-    end
+  def beats? player
+    (player.busted? && !busted?) (!player.busted? && (value > player.value)) #why won't this work?
   end
 
-  end
+
 
 
 end

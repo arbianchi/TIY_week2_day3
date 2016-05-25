@@ -125,7 +125,7 @@ class TestHand < Minitest::Test
 
     h2 = Hand.new
     h2.add(Card.new(:K, :H), Card.new(5, :S), Card.new(:Q, :S))
-    
+
     assert h1.beats?(h2)
     refute h2.beats?(h1)
 
