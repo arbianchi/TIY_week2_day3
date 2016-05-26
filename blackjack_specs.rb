@@ -196,37 +196,36 @@ class DealerTest < Minitest::Test
     d.hit p
 
     d.deal_hand_to p
-    binding.pry
     assert_equal 2, p.hand.cards.count
   end
-#
-#   def test_dealer_holds_the_deck
-#     d = Dealer.new
-#     assert d.deck.is_a?(Deck)
-#     assert_equal [], d.deck.drawn
-#   end
-#
-#   def test_dealer_deals_from_the_deck
-#     d = Dealer.new
-#     p = Player.new
-#
-#     d.deal_hand_to p
-#     assert_equal 2, d.deck.drawn.count
-#   end
-#
-#   def test_dealer_reshuffles_the_deck_when_needed
-#     d = Dealer.new
-#     p = Player.new
-#
-#     d.deal_hand_to p
-#     50.times { d.hit p }
-#     assert_equal d.deck.cards.count, 0
-#
-#     # This should re-start the deck / grab
-#     #   a new one
-#     # Don't worry about the player already
-#     #   "holding" these cards
-#     d.hit p
-#     assert_equal d.deck.cards.count, 51
-#   end
+
+  def test_dealer_holds_the_deck
+    d = Dealer.new
+    assert d.deck.is_a?(Deck)
+    assert_equal [], d.deck.drawn
+  end
+
+  def test_dealer_deals_from_the_deck
+    d = Dealer.new
+    p = Player.new
+
+    d.deal_hand_to p
+    assert_equal 2, d.deck.drawn.count
+  end
+
+  def test_dealer_reshuffles_the_deck_when_needed
+    d = Dealer.new
+    p = Player.new
+# binding.pry
+    d.deal_hand_to p
+    50.times { d.hit p }
+    assert_equal d.deck.cards.count, 0
+
+    # This should re-start the deck / grab
+    #   a new one
+    # Don't worry about the player already
+    #   "holding" these cards
+    d.hit p
+    assert_equal d.deck.cards.count, 51
+  end
 end

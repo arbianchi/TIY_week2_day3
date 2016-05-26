@@ -20,7 +20,11 @@ class Dealer
   end
 
   def hit player
-    player.hand.add(deck.draw)
+    if @deck.cards.count == 0
+      @deck.reshuffle
+      player.hand.add(deck.draw)
+    else
+      player.hand.add(deck.draw)
+    end
   end
-
 end
