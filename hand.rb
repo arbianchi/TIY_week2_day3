@@ -42,7 +42,8 @@ class Hand
   end
 
   def beats? player
-    (player.busted? && !busted?) (!player.busted? && (value > player.value)) #why won't this work?
+    (player.busted? && !busted?) || (!player.busted? && !busted? && (value > player.value))
+    # binding.pry #why won't this work?
   end
 
 

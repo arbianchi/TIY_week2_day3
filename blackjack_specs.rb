@@ -125,7 +125,6 @@ class TestHand < Minitest::Test
 
     h2 = Hand.new
     h2.add(Card.new(:K, :H), Card.new(5, :S), Card.new(:Q, :S))
-
     assert h1.beats?(h2)
     refute h2.beats?(h1)
 
@@ -142,41 +141,43 @@ class TestHand < Minitest::Test
     refute h2.beats?(h1)
   end
 end
-#
-# class PlayerTest < Minitest::Test
-#   def test_players_have_wallets
-#     p = Player.new 100
-#     assert_equal 100, p.wallet
-#   end
-#
-#   def test_players_can_win_money
-#     p = Player.new 50
-#     p.wins 10
-#     assert_equal 60, p.wallet
-#   end
-#
-#   def test_players_have_a_hand
-#     p = Player.new
-#     assert p.hand.is_a?(Hand)
-#   end
-#
-#   def test_players_can_be_broke
-#     p = Player.new 10
-#     refute p.broke?
-#
-#     p.wins -10
-#     assert p.broke?
-#   end
-# end
-#
-# class DealerTest < Minitest::Test
-#   def test_can_deal_a_hand
-#     p = Player.new
-#     d = Dealer.new
-#
-#     d.deal_hand_to p
-#     assert_equal 2, p.hand.cards.count
-#   end
+
+class PlayerTest < Minitest::Test
+  def test_players_have_wallets
+    p = Player.new 100
+    assert_equal 100, p.wallet
+  end
+
+  def test_players_can_win_money
+    p = Player.new 50
+    p.wins 10
+    assert_equal 60, p.wallet
+  end
+
+  def test_players_have_a_hand
+    p = Player.new
+    # binding.pry
+    assert p.hand.is_a?(Hand)
+  end
+
+  def test_players_can_be_broke
+    p = Player.new 10
+    refute p.broke?
+
+    p.wins -10
+    # binding.pry
+    assert p.broke?
+  end
+end
+
+class DealerTest < Minitest::Test
+  def test_can_deal_a_hand
+    p = Player.new
+    d = Dealer.new
+    d.deal_hand_to p
+
+    assert_equal 2, p.hand.cards.count
+  end
 #
 #   def test_can_deal_a_card
 #     p = Player.new
@@ -227,4 +228,4 @@ end
 #     d.hit p
 #     assert_equal d.deck.cards.count, 51
 #   end
-# end
+end
