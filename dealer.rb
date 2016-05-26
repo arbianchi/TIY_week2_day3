@@ -13,10 +13,14 @@ class Dealer
   end
 
   def deal_hand_to player
+    player.hand.cards.clear
+    2.times do
+      player.hand.add(deck.draw)
+    end
+  end
 
-    player.hand.add(@drawn)
-    player.hand.add(@drawn)
-
+  def hit player
+    player.hand.add(deck.draw)
   end
 
 end

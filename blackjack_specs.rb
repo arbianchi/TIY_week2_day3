@@ -178,26 +178,27 @@ class DealerTest < Minitest::Test
 
     assert_equal 2, p.hand.cards.count
   end
-#
-#   def test_can_deal_a_card
-#     p = Player.new
-#     d = Dealer.new
-#
-#     d.deal_hand_to p
-#     d.hit p
-#     assert_equal 3, p.hand.cards.count
-#   end
-#
-#   def test_dealing_a_new_hand_resets
-#     p = Player.new
-#     d = Dealer.new
-#
-#     d.deal_hand_to p
-#     d.hit p
-#
-#     d.deal_hand_to p
-#     assert_equal 2, p.hand.cards.count
-#   end
+
+  def test_can_deal_a_card
+    p = Player.new
+    d = Dealer.new
+
+    d.deal_hand_to p
+    d.hit p
+    assert_equal 3, p.hand.cards.count
+  end
+
+  def test_dealing_a_new_hand_resets
+    p = Player.new
+    d = Dealer.new
+
+    d.deal_hand_to p
+    d.hit p
+
+    d.deal_hand_to p
+    binding.pry
+    assert_equal 2, p.hand.cards.count
+  end
 #
 #   def test_dealer_holds_the_deck
 #     d = Dealer.new
